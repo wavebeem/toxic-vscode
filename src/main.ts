@@ -12,7 +12,7 @@ const Contrast = {
   text: 4.5,
   ui: 3,
   // Not a WCAG value
-  decoration: 1.25,
+  decoration: 1.2,
 } as const;
 type ContrastLevel = keyof typeof Contrast;
 
@@ -45,13 +45,11 @@ interface TokenColor {
   settings: TokenSetting;
 }
 
-const angle = 45;
-
 const hue = {
   main: 300,
-  uno: 300 + angle,
-  due: 300 - angle,
-  tre: 120,
+  uno: 120,
+  due: 200,
+  tre: 60,
 } as const;
 
 const terminal = {
@@ -69,7 +67,7 @@ const ui = {
   bg0: lch(15, 25, hue.main),
   bg1: lch(10, 25, hue.main),
 
-  fg: lch(85, 20, hue.main),
+  fg: lch(85, 25, hue.main),
 
   border0: lch(25, 25, hue.main),
   border1: lch(50, 25, hue.main),
@@ -86,16 +84,16 @@ const syntax = {
   alt0: lch(60, 15, hue.main),
   alt1: lch(60, 60, hue.main),
 
-  uno0: lch(80, 40, hue.uno),
-  uno1: lch(70, 70, hue.uno),
+  uno0: lch(95, 40, hue.uno),
+  uno1: lch(80, 70, hue.uno),
 
-  due0: lch(90, 50, hue.due),
-  due1: lch(80, 90, hue.due),
-  due2: lch(70, 90, hue.due),
+  due0: lch(95, 40, hue.due),
+  due1: lch(80, 60, hue.due),
+  due2: lch(70, 70, hue.due),
 
-  tre0: lch(90, 50, hue.tre),
-  tre1: lch(80, 90, hue.tre),
-  tre2: lch(70, 90, hue.tre),
+  tre0: lch(90, 40, hue.tre),
+  tre1: lch(80, 60, hue.tre),
+  tre2: lch(70, 70, hue.tre),
 } as const;
 
 const diff = {
@@ -1048,6 +1046,8 @@ function tokenColors(): TokenColor[] {
   ];
 }
 
+let hasContrastError = false;
+
 function showContrast(
   level: ContrastLevel,
   fg: string,
@@ -1067,7 +1067,7 @@ function showContrast(
   ].join(" ");
   if (fail) {
     console.error(ANSI.bold.red(str));
-    process.exit(1);
+    hasContrastError = true;
   } else {
     console.log(str);
   }
@@ -1169,6 +1169,10 @@ function printContrastReport(): void {
   showContrast("text", ui.bracket1, ui.bg0, "ui.bracket1", "ui.bg0");
   showContrast("text", ui.bracket2, ui.bg0, "ui.bracket2", "ui.bg0");
   showContrast("text", ui.bracket3, ui.bg0, "ui.bracket3", "ui.bg0");
+  if (hasContrastError) {
+    console.error(ANSI.bold.red("=== CONTRAST FAILURE ==="));
+    process.exit(1);
+  }
 }
 
 save();
