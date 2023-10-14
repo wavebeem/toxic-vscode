@@ -5,3 +5,4 @@ build
 *.zip
 examples
 .vscode/settings.json
+*~lock~
