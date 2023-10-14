@@ -55,7 +55,7 @@ const hue = {
 const terminal = {
   black: lch(30, 40, hue.main),
   red: lch(70, 60, 20),
-  green: lch(70, 60, hue.tre),
+  green: lch(70, 60, hue.uno),
   yellow: lch(70, 60, 65),
   blue: lch(70, 60, 280),
   magenta: lch(70, 60, 330),
@@ -75,6 +75,10 @@ const ui = {
   bracket1: lch(65, 48, hue.uno),
   bracket2: lch(65, 32, hue.due),
   bracket3: lch(65, 31, hue.tre),
+
+  accent0: lch(100, 40, hue.uno),
+  accent1: lch(100, 100, hue.uno),
+  accent2: lch(70, 100, hue.uno),
 
   error: terminal.red,
 } as const;
@@ -141,11 +145,11 @@ function themeActivityBar(): ThemeUIColors {
   return {
     "activityBar.border": ui.border0,
     "activityBar.background": ui.bg1,
-    "activityBar.foreground": syntax.tre2,
+    "activityBar.foreground": ui.accent1,
     "activityBar.inactiveForeground": ui.fg,
-    "activityBarBadge.background": syntax.due1,
+    "activityBarBadge.background": ui.accent2,
     "activityBarBadge.foreground": ui.bg0,
-    "activityBar.activeBorder": syntax.tre2,
+    "activityBar.activeBorder": ui.accent1,
     "activityBar.activeBackground": transparent,
   };
 }
@@ -169,7 +173,7 @@ function themeList(): ThemeUIColors {
 
     "list.errorForeground": terminal.red,
     "list.warningForeground": terminal.yellow,
-    "list.highlightForeground": syntax.tre1,
+    "list.highlightForeground": ui.accent1,
 
     "list.focusForeground": ui.fg,
     "list.focusHighlightForeground": ui.bg0,
@@ -192,8 +196,8 @@ function themeList(): ThemeUIColors {
 
 function themeWelcome(): ThemeUIColors {
   return {
-    "textLink.foreground": syntax.tre1,
-    "textLink.activeForeground": syntax.tre0,
+    "textLink.foreground": ui.accent1,
+    "textLink.activeForeground": ui.accent0,
     "textBlockQuote.background": transparent,
     "textBlockQuote.border": syntax.default,
     "textPreformat.foreground": syntax.due1,
@@ -296,7 +300,7 @@ function themeStatusBar(): ThemeUIColors {
 function themeBadge(): ThemeUIColors {
   return {
     "badge.foreground": ui.bg0,
-    "badge.background": syntax.due1,
+    "badge.background": ui.accent2,
   };
 }
 
@@ -429,7 +433,7 @@ function themeEditor(): ThemeUIColors {
     "editor.wordHighlightBackground": alpha(bg.blue, 50),
     "editor.wordHighlightStrongBackground": alpha(bg.purple, 50),
     "editorOverviewRuler.border": alpha(ui.border0, 25),
-    "editorCursor.foreground": syntax.tre1,
+    "editorCursor.foreground": ui.accent1,
     "editorGroup.border": ui.border0,
     "editorIndentGuide.background": alpha(ui.border0, 50),
     "editorIndentGuide.activeBackground": ui.border0,
@@ -478,8 +482,8 @@ function themeTabs(): ThemeUIColors {
     "editorGroupHeader.tabsBackground": ui.bg1,
     "tab.activeBorder": ui.border0,
     "tab.unfocusedActiveBorder": ui.border0,
-    "tab.activeBorderTop": syntax.tre2,
-    "tab.unfocusedActiveBorderTop": syntax.tre2,
+    "tab.activeBorderTop": ui.accent1,
+    "tab.unfocusedActiveBorderTop": ui.accent1,
     "tab.activeBackground": ui.bg0,
     "tab.activeForeground": ui.fg,
     "tab.inactiveBackground": ui.bg1,
@@ -489,7 +493,7 @@ function themeTabs(): ThemeUIColors {
 
 function colors(): ThemeUIColors {
   return {
-    focusBorder: syntax.tre1,
+    focusBorder: ui.accent1,
     errorForeground: terminal.red,
     disabledForeground: alpha(ui.fg, 50),
     "icon.foreground": ui.fg,
@@ -519,8 +523,8 @@ function colors(): ThemeUIColors {
     foreground: ui.fg,
     "panel.background": ui.bg1,
     "panel.border": ui.border0,
-    "panelTitle.activeBorder": syntax.tre1,
-    "panelTitle.activeForeground": syntax.tre1,
+    "panelTitle.activeBorder": ui.accent1,
+    "panelTitle.activeForeground": ui.accent1,
     "panelTitle.inactiveForeground": ui.fg,
     "sideBar.border": ui.border0,
     "sideBar.background": ui.bg1,
@@ -1083,6 +1087,9 @@ function printContrastReport(): void {
   showContrast("text", ui.error, ui.bg0, "ui.error", "ui.bg0");
   showContrast("text", ui.fg, ui.bg0, "ui.fg", "ui.bg0");
   showContrast("text", ui.fg, ui.bg1, "ui.fg", "ui.bg1");
+  showContrast("text", ui.accent0, ui.bg0, "ui.accent0", "ui.bg0");
+  showContrast("text", ui.accent1, ui.bg0, "ui.accent1", "ui.bg0");
+  showContrast("text", ui.accent2, ui.bg0, "ui.accent2", "ui.bg0");
   showContrast("decoration", ui.border0, ui.bg0, "ui.border0", "ui.bg0");
   showContrast("decoration", ui.border0, ui.bg1, "ui.border0", "ui.bg1");
   showContrast(
