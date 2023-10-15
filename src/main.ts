@@ -67,7 +67,7 @@ const ui = {
   bg0: lch(15, 25, hue.main),
   bg1: lch(10, 25, hue.main),
 
-  fg: lch(85, 25, hue.main),
+  fg: lch(80, 35, hue.main),
 
   border0: lch(25, 25, hue.main),
   border1: lch(50, 25, hue.main),
@@ -88,16 +88,16 @@ const syntax = {
   alt0: lch(60, 15, hue.main),
   alt1: lch(60, 60, hue.main),
 
-  uno0: lch(95, 40, hue.uno),
-  uno1: lch(80, 70, hue.uno),
+  uno0: lch(90, 40, hue.uno),
+  uno1: lch(80, 80, hue.uno),
 
-  due0: lch(95, 40, hue.due),
-  due1: lch(80, 60, hue.due),
-  due2: lch(70, 70, hue.due),
+  due0: lch(90, 30, hue.due),
+  due1: lch(75, 70, hue.due),
+  due2: lch(60, 80, hue.due),
 
   tre0: lch(90, 40, hue.tre),
   tre1: lch(80, 60, hue.tre),
-  tre2: lch(70, 70, hue.tre),
+  tre2: lch(70, 80, hue.tre),
 } as const;
 
 const diff = {
