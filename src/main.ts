@@ -77,7 +77,7 @@ const ui = {
   fg: hsl(hue2.main, 85, 85),
 
   border0: hsl(hue2.main, 40, 35),
-  border1: hsl(hue2.main, 40, 70),
+  border1: hsl(hue2.main, 40, 60),
 
   bracket1: lch(65, 48, hue.uno),
   bracket2: lch(65, 32, hue.due),
@@ -93,8 +93,8 @@ const ui = {
 
 const syntax = {
   default: ui.fg,
-  alt0: hsl(hue2.main, 13, 60),
-  alt1: hsl(hue2.main, 76, 72),
+  alt0: hsl(hue2.main, 15, 60),
+  alt1: hsl(hue2.main, 85, 75),
 
   uno0: hsl(hue2.uno, 65, 75),
   uno1: hsl(hue2.uno, 85, 45),
