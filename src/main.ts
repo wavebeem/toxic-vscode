@@ -61,13 +61,13 @@ const hue2 = {
 
 const terminal = {
   black: lch(30, 40, hue.main),
-  red: lch(70, 60, 20),
-  green: hsl(hue2.uno, 85, 45),
-  yellow: lch(70, 60, 65),
-  blue: lch(70, 60, 280),
-  magenta: lch(70, 60, 330),
-  cyan: lch(70, 60, 190),
   white: lch(96, 10, hue.main),
+  green: hsl(hue2.uno, 85, 45),
+  red: lch(70, 75, 20),
+  yellow: lch(70, 75, 65),
+  blue: lch(70, 75, 280),
+  magenta: lch(70, 75, 330),
+  cyan: lch(70, 75, 190),
 } as const;
 
 const ui = {
@@ -120,14 +120,20 @@ const bg = {
   purple: lch(40, 65, 330),
 } as const;
 
+/** Only use LCH for colors I don't care about as much. */
 function lch(l: number, c: number, h: number): string {
   return colord({ l, c, h }).toHex();
 }
 
+/** Lovingly hand picked colors use HSL, at least until OKLCH is available. */
 function hsl(h: number, s: number, l: number): string {
   return colord({ h, s, l }).toHex();
 }
 
+/**
+ * This isn't a great practice, but VS Code forces us to use transparent colors
+ * in certain scenarios. Limit this to those, please.
+ */
 function alpha(color: string, percent: number): string {
   const rgb = colord(color).toRgb();
   rgb.a = percent / 100;
