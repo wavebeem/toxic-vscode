@@ -52,6 +52,13 @@ const hue = {
   tre: 60,
 } as const;
 
+const hue2 = {
+  main: 250,
+  uno: -999,
+  due: -999,
+  tre: 80,
+} as const;
+
 const terminal = {
   black: lch(30, 40, hue.main),
   red: lch(70, 60, 20),
@@ -64,13 +71,13 @@ const terminal = {
 } as const;
 
 const ui = {
-  bg0: lch(15, 25, hue.main),
-  bg1: lch(10, 25, hue.main),
+  bg0: hsl(hue2.main, 40, 20),
+  bg1: hsl(hue2.main, 40, 15),
 
-  fg: lch(80, 35, hue.main),
+  fg: hsl(hue2.main, 85, 85),
 
-  border0: lch(25, 25, hue.main),
-  border1: lch(50, 25, hue.main),
+  border0: hsl(hue2.main, 40, 35),
+  border1: hsl(hue2.main, 40, 70),
 
   bracket1: lch(65, 48, hue.uno),
   bracket2: lch(65, 32, hue.due),
@@ -82,6 +89,26 @@ const ui = {
 
   error: terminal.red,
 } as const;
+
+// const ui = {
+//   bg0: lch(15, 25, hue.main),
+//   bg1: lch(10, 25, hue.main),
+
+//   fg: lch(80, 35, hue.main),
+
+//   border0: lch(25, 25, hue.main),
+//   border1: lch(50, 25, hue.main),
+
+//   bracket1: lch(65, 48, hue.uno),
+//   bracket2: lch(65, 32, hue.due),
+//   bracket3: lch(65, 31, hue.tre),
+
+//   accent0: lch(100, 40, hue.uno),
+//   accent1: lch(100, 100, hue.uno),
+//   accent2: lch(70, 100, hue.uno),
+
+//   error: terminal.red,
+// } as const;
 
 const syntax = {
   default: ui.fg,
@@ -116,9 +143,9 @@ function lch(l: number, c: number, h: number): string {
   return colord({ l, c, h }).toHex();
 }
 
-// function hsl(h: number, s: number, l: number): string {
-//   return colord({ h, s, l }).toHex();
-// }
+function hsl(h: number, s: number, l: number): string {
+  return colord({ h, s, l }).toHex();
+}
 
 function alpha(color: string, percent: number): string {
   const rgb = colord(color).toRgb();
