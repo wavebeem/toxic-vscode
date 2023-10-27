@@ -2,7 +2,7 @@
   "name": "toxic-vscode",
   "displayName": "Toxic",
   "description": "A toxic purple theme featuring slime green accents",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/wavebeem/toxic-vscode.git"
