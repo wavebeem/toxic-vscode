@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.0
+
+- Made the regular text color brighter
+
 ## v0.2.0
 
 - Fixed colors that were too reddish and not saturated enough
