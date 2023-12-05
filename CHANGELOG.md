@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.1
+
+- Fixed the incorrect text color that was committed
+
 ## v0.3.0
 
 - Made the regular text color brighter
